@@ -16,7 +16,7 @@
             <input type="text" id="last-name" name="lastname" autocomplete="family-name" placeholder="Dupont" aria-labelledby="field-lastname-label" required="" autofocus="">
             </br>
             birthday
-            <input type="text" inputmode="numeric" id="birthdate" name="birthday" autocomplete="bday" placeholder="01/01/1970" maxlength="10" aria-labelledby="field-birthday-label" required="">
+            <input type="text" id="birthdate" name="birthday" autocomplete="bday" placeholder="01/01/1970" maxlength="10" aria-labelledby="field-birthday-label" required="">
             </br>
             lieunaissance
             <input type="text" id="birth-place" name="lieunaissance" aria-labelledby="field-lieunaissance-label" placeholder="Lyon" required="">
@@ -32,16 +32,25 @@
             </br></br></br>
 
             REASON </br>
+
             <select id="motive" name="motive">
-                <option value="0">Sélectionnez une raison...</option>
-                <option value="travail">travail</option>
-                <option value="sante">sante</option>
-                <option value="famille">famille</option>
-                <option value="handicap">handicap</option>
-                <option value="convocation">convocation</option>
-                <option value="missions">missions</option>
-                <option value="transits">transits</option>
-                <option value="animaux">animaux</option>
+                <option disabled selected>Sélectionnez une raison...</option>
+                <optgroup label="Couvre-feu">
+                    <option value="curfew-travail">travail</option>
+                    <option value="curfew-sante">sante</option>
+                    <option value="curfew-famille">famille</option>
+                    <option value="curfew-convocation_demarches">convocation/démarches</option>
+                    <option value="curfew-animaux">animaux</option>
+                </optgroup>
+                <optgroup label="Journée">
+                    <option value="quarantine-travail">travail</option>
+                    <option value="quarantine-sante">sante</option>
+                    <option value="quarantine-famille">famille</option>
+                    <option value="quarantine-convocation_demarches">convocation/démarches</option>
+                    <option value="quarantine-demenagement">déménagement</option>
+                    <option value="quarantine-achats_culte_culturel">achats/culte/culturel</option>
+                    <option value="quarantine-sport">sport</option>
+                </optgroup>
             </select>
         </form>
         <button onclick="refreshData()">Valider</button>
