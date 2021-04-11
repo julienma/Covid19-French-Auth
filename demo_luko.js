@@ -67,5 +67,26 @@ setTimeout(function () {
 
 document.getElementById('div-url-generate').style.display = 'none';
 document.getElementById('url-generate').style.overflowWrap = "break-word";
-document.querySelector("#motive > option:nth-child(1)").disabled = true;
-document.querySelector("#motive > option:nth-child(1)").selected = true;
+
+const motiveOptions = `<select id="motive" name="motive">
+<option disabled selected>Sélectionnez une raison...</option>
+<optgroup label="Couvre-feu (19h-6h)">
+    <option value="curfew-travail">Activité professionnelle, enseignement et formation, mission d’intérêt général</option>
+    <option value="curfew-sante">Santé (consultation et soins)</option>
+    <option value="curfew-famille">Motif familial impérieux, assistance aux personnes vulnérables, garde d’enfants, situation de handicap</option>
+    <option value="curfew-convocation_demarches">Convocation judiciaire ou administrative, démarches ne pouvant être menées à distance</option>
+    <option value="curfew-animaux">Animaux de compagnie, le soir et la nuit</option>
+</optgroup>
+<optgroup label="Journée (6h-19h)">
+    <option value="quarantine-travail">Activité professionnelle, enseignement et formation, mission d’intérêt général</option>
+    <option value="quarantine-sante">Santé (consultation et soins)</option>
+    <option value="quarantine-famille">Motif familial impérieux, assistance aux personnes vulnérables, garde d’enfants, situation de handicap</option>
+    <option value="quarantine-convocation_demarches">Convocation judiciaire ou administrative, démarches ne pouvant être menées à distance</option>
+    <option value="quarantine-demenagement">Déménagement</option>
+    <option value="quarantine-achats_culte_culturel">Achats, établissements culturels ou lieux de culte</option>
+    <option value="quarantine-sport">Activité physique, de plein air, promenade</option>
+</optgroup>
+</select>`
+
+const motive = document.getElementById("motive");
+motive.innerHTML = motiveOptions;

@@ -13,15 +13,34 @@ window.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById("field-city").value = urlParams.get("c"); //city
     document.getElementById("field-zipcode").value = urlParams.get("z"); //zipcode
 
-    const reason = urlParams.get("r"); //reason
+    let reason = urlParams.get("r");
+    const isQuarantine = reason.indexOf("quarantine-") !== -1;
+    reason = reason.replace(/curfew-|quarantine-/, '')
+    if (isQuarantine) {
+        document.getElementById("quarantine-button").click()
+    } else {
+        document.getElementById("curfew-button").click()
+    }
+
     document.getElementById("radio-travail").checked = (reason==='travail');
     document.getElementById("radio-sante").checked = (reason==='sante');
     document.getElementById("radio-famille").checked = (reason==='famille');
     document.getElementById("radio-handicap").checked = (reason==='handicap');
     document.getElementById("radio-convocation").checked = (reason==='convocation');
+    document.getElementById("radio-convocation_demarches").checked = (reason==='convocation_demarches');
     document.getElementById("radio-missions").checked = (reason==='missions');
     document.getElementById("radio-transits").checked = (reason==='transits');
     document.getElementById("radio-animaux").checked = (reason==='animaux');
+
+    document.getElementById("radio-sport").checked = (reason==='sport');
+    document.getElementById("radio-achats").checked = (reason==='achats');
+    document.getElementById("radio-enfants").checked = (reason==='enfants');
+    document.getElementById("radio-culte_culturel").checked = (reason==='culte_culturel');
+    document.getElementById("radio-achats_culte_culturel").checked = (reason==='achats_culte_culturel');
+    document.getElementById("radio-demarche").checked = (reason==='demarche');
+    document.getElementById("radio-judiciaire").checked = (reason==='judiciaire');
+    document.getElementById("radio-demenagement").checked = (reason==='demenagement');
+    document.getElementById("radio-transit").checked = (reason==='transit');
 
     var now = new Date()
     var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Paris"
@@ -45,7 +64,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 function badScriptLoading(event) {
     console.log("Official JS is not working. Patching using local copy.")
     let script = document.createElement('script');
-    script.src = "attestation-couvre-feu-covid-19/main.36f6dadf.js";
+    script.src = "attestation-deplacement-derogatoire-covid-19/main.ad1e769a.js";
     document.head.append(script)
 }
 
